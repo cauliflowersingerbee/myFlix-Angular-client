@@ -107,6 +107,17 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+   // Making the api call to add movie to favorites
+   addFavorite(MovieID: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const Username = localStorage.getItem('Username');
+    return this.http
+      .post(apiUrl + `users/:Username/movies/:MovieID`, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
 
 
 // Non-typed response extraction
