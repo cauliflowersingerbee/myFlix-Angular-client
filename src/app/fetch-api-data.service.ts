@@ -22,8 +22,7 @@ export class UserRegistrationService {
     //The pipe() function takes the functions you want to combine (in this case, 
     //there's one method, catchError) as its arguments and will return a new 
     //function that, when executed, runs the composed functions in sequence.
-    .pipe(
-    catchError(this.handleError)
+    .pipe(catchError(this.handleError)
     );
   }
 
@@ -31,9 +30,8 @@ export class UserRegistrationService {
    public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-    .post(apiUrl + 'users', userDetails)
-    .pipe(
-    catchError(this.handleError)
+    .post(apiUrl + 'login', userDetails)
+    .pipe(catchError(this.handleError)
     );
   }
 
