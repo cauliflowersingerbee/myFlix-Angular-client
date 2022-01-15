@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/internal/operators';
-import { HttpClient, HttpClientModule, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -17,7 +17,11 @@ export class UserRegistrationService {
  // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
-    return this.http.post(apiUrl + 'users', userDetails).pipe(
+    return this.http.post(apiUrl + 'users', userDetails)
+    //The pipe() function takes the functions you want to combine (in this case, 
+    //there's one method, catchError) as its arguments and will return a new 
+    //function that, when executed, runs the composed functions in sequence.
+    .pipe(
     catchError(this.handleError)
     );
   }
