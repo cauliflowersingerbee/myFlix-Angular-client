@@ -87,6 +87,27 @@ export class UserRegistrationService {
     );
   }
 
+  // Making the api call for getting username
+  getUser(Username: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+      .get(apiUrl + `users/:Username`, {
+        headers: new HttpHeaders({ Authrization: 'Bearer ' + token }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+   // Making the api call to access favorite movies list
+  getFavorites(Username: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+      .get(apiUrl + `users/:Username/movies`, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+
 
 // Non-typed response extraction
   private extractResponseData(res: any): any {
