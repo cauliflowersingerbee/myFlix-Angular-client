@@ -74,6 +74,19 @@ export class UserRegistrationService {
     );
   }
 
+  // Making the api call for getting movie genre
+  getGenre(Name: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+    .get(apiUrl + `genres/:Name`, {headers: new HttpHeaders(
+      {
+        Authorization: 'Bearer ' + token,
+      })})
+      .pipe(map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
 
 // Non-typed response extraction
   private extractResponseData(res: any): any {
