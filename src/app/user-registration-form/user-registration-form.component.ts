@@ -12,12 +12,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 //decorator to tell angular that class right below is a component
 @Component({
+  //selector defines the custom HTML element into which this 
+  //component will render
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
   styleUrls: ['./user-registration-form.component.scss']
 })
 export class UserRegistrationFormComponent implements OnInit {
-
+//decorator to define the component's input (user data)
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
 constructor(
@@ -25,6 +27,8 @@ constructor(
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar) { }
 
+//called once the component has received all its inputs 
+//(all its data-bound properties) from the calling component
 ngOnInit(): void {
 }
 
