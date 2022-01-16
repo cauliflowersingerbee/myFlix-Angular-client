@@ -49,10 +49,10 @@ export class UserRegistrationService {
   }
 
   // Making the api call for getting one movie
-  getMovie(title: any): Observable<any> {
+  getMovie(Title: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-    .get(apiUrl + `movies/${title}`, {headers: new HttpHeaders(
+    .get(apiUrl + `movies/${Title}`, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })})
