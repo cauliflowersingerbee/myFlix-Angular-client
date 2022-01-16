@@ -10,7 +10,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
+//decorator to tell angular that class right below is a component
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
