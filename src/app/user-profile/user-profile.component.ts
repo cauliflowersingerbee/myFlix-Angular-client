@@ -1,3 +1,5 @@
+//allows users to view/edit their profile.
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
