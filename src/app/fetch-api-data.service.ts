@@ -31,11 +31,11 @@ export class FetchApiDataService {
    public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-    .post(apiUrl + 'login', userDetails)
+    .post(apiUrl + '/login', userDetails)
     .pipe(catchError(this.handleError)
     );
   }
-
+ 
    // Making the api call for getting all movies
    getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
