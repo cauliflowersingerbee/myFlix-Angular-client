@@ -11,7 +11,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
-  constructor(public fetchApiData: FetchApiDataService) { }
+  constructor(
+    public fetchApiData: FetchApiDataService,
+    public dialog: MatDialog,
+    public router: Router,
+    public snackBar: MatSnackBar
+     ) { }
 
   ngOnInit(): void {
     this.getMovies();
