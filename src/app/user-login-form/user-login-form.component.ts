@@ -27,6 +27,8 @@ loginUser(): void {
   this.fetchApiData.userLogin(this.userData).subscribe((response) => {
 // Logic for a successful user registration goes here! (To be implemented)
    this.dialogRef.close(); // This will close the modal on success!
+   localStorage.setItem('token', response.token);
+   localStorage.setItem('user', JSON.stringify(response.user));
    console.log(response);
    this.snackBar.open('user logged in successfully', 'OK', {
       duration: 2000
