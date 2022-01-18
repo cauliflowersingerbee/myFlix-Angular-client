@@ -14,12 +14,12 @@ export class FetchApiDataService {
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
   }
-  
+
  // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-    .post(apiUrl + 'users', userDetails)
+    .post(apiUrl + '/users', userDetails)
     //The pipe() function takes the functions you want to combine (in this case, 
     //there's one method, catchError) as its arguments and will return a new 
     //function that, when executed, runs the composed functions in sequence.
