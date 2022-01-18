@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FetchApiDataService } from '../fetch-api-data.service'
 
 @Component({
   selector: 'app-movie-card',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-
-  constructor() { }
+  movies: any[] = [];
+  constructor(public fetchApiData: FetchApiDataService) { }
 
   ngOnInit(): void {
   }
