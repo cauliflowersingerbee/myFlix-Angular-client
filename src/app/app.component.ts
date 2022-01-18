@@ -13,13 +13,11 @@ import { MatDialog } from '@angular/material/dialog';
 export class AppComponent {
   title = 'myFlix-Angular-client';
 
-  //passing Angular Material dialog 
-  constructor(public dialog: MatDialog) { }
-
+  
   //openMoviesDialog(): void {
     //this.dialog.open(MovieCardComponent, {
      // width: 'auto',
       //height: 'auto'
     //});
   }
-}
+
