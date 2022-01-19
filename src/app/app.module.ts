@@ -29,6 +29,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ProfileDeleteComponent } from './profile-delete/profile-delete.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -45,6 +47,8 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfileComponent,
     MainNavComponent,
+    ProfileDeleteComponent,
+    ProfileEditComponent,
   ],
   
   imports: [
