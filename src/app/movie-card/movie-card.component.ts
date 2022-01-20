@@ -34,9 +34,17 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
-    getUserDetails() : void {
-     let user = JSON.stringify(localStorage.getItem('user')) ;
-     console.log(user);
+    //getUserDetails() : void {
+    // let user = JSON.stringify(localStorage.getItem('user')) ;
+     //console.log(user);
+
+     getUserDetails() : void {
+      const user = JSON.parse(localStorage.getItem('user') || '');
+      this.fetchApiData.getUser(user.Username).subscribe((res: any) => {
+        this.user = res;
+      });
+    }
+  
      
      //this.fetchApiData.getUser(this.user).subscribe((data: any) => {
        //this.user= data;
@@ -44,5 +52,5 @@ export class MovieCardComponent implements OnInit {
 
      //})
     }
-}
+
 
