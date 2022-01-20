@@ -16,6 +16,7 @@ import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
 export class UserProfileComponent implements OnInit {
 
   user: any = {};
+  favMovies: any = {};
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -35,6 +36,18 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  getFavMovies(): void {
+    let movies: any[] = [];
+    this.fetchApiData.getAllMovies().subscribe((res: any) => {
+      movies = res;
+      movies.forEach((movie: any) => {
+        if (this.user.FavoriteMovies.includes(movie._id)) {
+          this.favMovies.push(movie);
+        }
+      });
+    });
+    return this.favMovies;
+  }
 
   deregisterUser(): void {
     this.dialog.open(ProfileDeleteComponent, {
