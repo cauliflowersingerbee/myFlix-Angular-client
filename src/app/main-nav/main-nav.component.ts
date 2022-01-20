@@ -23,14 +23,5 @@ export class MainNavComponent {
     public router: Router,
     public snackBar: MatSnackBar) {}
 
-    userLogout(): void {
-      localStorage.clear();
-      console.log('user logged out successfully');
-      this.snackBar.open('user logged out successfully', 'OK', {
-        duration: 2000,
-      });
-      this.router.navigate(['/welcome']).then(() => {
-        window.location.reload();
-      });
-    } 
+   
 }
