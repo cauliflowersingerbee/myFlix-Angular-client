@@ -31,10 +31,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ProfileDeleteComponent } from './profile-delete/profile-delete.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponent },
+  { path: 'home', component: MovieCardComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
     MainNavComponent,
     ProfileDeleteComponent,
     ProfileEditComponent,
+    LogoutComponent,
   ],
   
   imports: [
