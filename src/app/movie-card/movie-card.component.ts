@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
-  user: any = {};
+  user: any[]= [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -35,9 +35,13 @@ export class MovieCardComponent implements OnInit {
     }
 
     getUserDetails() : void {
-      const user = JSON.parse(localStorage.getItem('user') || '');
-      this.fetchApiData.getUser(user.Username).subscribe((res: any) => {
-        this.user = res;
-      });
+     let user = localStorage.getItem('user') ;
+     console.log(user);
+     //this.fetchApiData.getUser(this.user).subscribe((data: any) => {
+       //this.user= data;
+       //console.log(this.user);
+
+     //})
     }
 }
+
