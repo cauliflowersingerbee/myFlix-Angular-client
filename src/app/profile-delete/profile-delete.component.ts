@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class ProfileDeleteComponent implements OnInit {
 
   constructor( public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<ProfileDeleteComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -27,15 +30,14 @@ export class ProfileDeleteComponent implements OnInit {
          console.log(res);
          localStorage.removeItem('user');
         this.snackBar.open('Profile successfully deleted', 'OK', {
-           duration:82000
+           duration:2000
          });
-        }, (response) => {
-          console.log(response)
-          this.snackBar.open(response, 'OK', {
-            duration: 4000
-          });
+        }),
+        this.router.navigate(['/welcome']).then(() => {
+          window.location.reload();
         });
-   }
+        
+  }
 }
 
 
