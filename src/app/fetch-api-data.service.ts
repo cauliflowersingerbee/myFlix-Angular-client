@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -120,29 +120,28 @@ export class FetchApiDataService {
   }
 
   // Making the api call to edit user
-  public updateUser(userData: any): Observable<any> {
+  public updateUser(userInfo: any): Observable<any> {
     const token = localStorage.getItem('token');
     const user: any = JSON.parse(localStorage.getItem('user') || '');
     const Username = user.Username;
 
-    return this.http
-      .put(apiUrl + `/users/${Username}`, userData, {
-        headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
-      })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+    const response = this.http.put(apiUrl + `/users/${Username}`, userInfo, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }), responseType: 'text'});
+    
+    return response.pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Making the api call to delete user
- // deleteUser(username:): Observable<any> {
-  //  const token = localStorage.getItem('token');
-   // const user = localStorage.getItem('user');
-   // console.log(user);
-    //return this.http
-      //.delete(apiUrl + `/users/${Username}`, {
-      //  headers: new HttpHeaders({ Authorization: 'bearer ' + token }),
-   //   })
-      //.pipe(map(this.extractResponseData), catchError(this.handleError));
-//  }
+  //Making the api call to delete user
+  deleteUser(Username: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    console.log(user);
+    return this.http
+      .delete(apiUrl + `/users/${Username}`, {
+        headers: new HttpHeaders({ Authorization: 'bearer ' + token, }),
+     })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+ }
 
   // Making the api call to delete movie from favorites
   //deleteFavoriteMovie(MovieID: any): Observable<any> {
@@ -156,21 +155,23 @@ export class FetchApiDataService {
   //}
 
 // Non-typed response extraction
-  private extractResponseData(res: any): any {
-    const body = res;
+  private extractResponseData(response: any): any {
+    const body = response;
     return body || { };
   }
 
 
-private handleError(error: HttpErrorResponse): any {
+private handleError(error: HttpErrorResponse): Observable<any> {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);
     } else {
     console.error(
         `Error Status code ${error.status}, ` +
-        `Error body is: ${error.error}`);
-    }
-    return throwError(
-    'Something bad happened; please try again later.');
+        `Error body is: ${JSON.stringify(error.error)}`
+    );
+   }
+  return throwError(
+   'Something bad happened; please try again later.');
   }
 }
+

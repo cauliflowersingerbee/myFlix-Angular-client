@@ -1,11 +1,6 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-// You'll use this import to close the dialog on success
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-
-// This import brings in the API calls we created in 6.2
 import { FetchApiDataService } from '../fetch-api-data.service';
-
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
  
 
@@ -16,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ProfileEditComponent implements OnInit {
 
-  user = localStorage.getItem('user') || '';
+  //user = localStorage.getItem('user') || '';
   
 
 //decorator to define the component's input (user data)
@@ -36,24 +31,19 @@ export class ProfileEditComponent implements OnInit {
   // This is the function responsible for sending the form inputs to the backend
 editUser(): void {
   
-  this.fetchApiData.updateUser(this.userData).subscribe((response) => {
-    // Logic for a successful user registration goes here! (To be implemented)
+  this.fetchApiData.updateUser(this.userData).subscribe((res: any) => {
        this.dialogRef.close(); // This will close the modal on success!
-       console.log(response);
-       localStorage.setItem('user', this.userData.Username);
-       localStorage.setItem('password', this.userData.Password); 
-       this.snackBar.open('Profile successfully updated', 'OK', {
-          duration: 2000
+       console.log(res);
+       localStorage.setItem('user', JSON.stringify(this.userData));
+      this.snackBar.open('Profile successfully updated', 'OK', {
+         duration:82000
        });
       }, (response) => {
         console.log(response)
         this.snackBar.open(response, 'OK', {
           duration: 4000
         });
-        setTimeout(() => {
-          window.location.reload();
-        }, 200000);
       });
-}
+ }
 }
 
