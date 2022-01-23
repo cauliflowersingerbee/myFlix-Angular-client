@@ -132,15 +132,16 @@ export class FetchApiDataService {
   }
 
   //Making the api call to delete user
-  deleteUser(Username: any): Observable<any> {
+  deleteUser( ): Observable<any> {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
+    const user: any = JSON.parse(localStorage.getItem('user') || '');
+    const Username = user.Username;
+
     console.log(user);
-    return this.http
-      .delete(apiUrl + `/users/${Username}`, {
+    const response = this.http.delete(apiUrl + `/users/${Username}`, {
         headers: new HttpHeaders({ Authorization: 'bearer ' + token, }),
-     })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+        responseType: 'text' });
+     return response.pipe(map(this.extractResponseData), catchError(this.handleError));
  }
 
   // Making the api call to delete movie from favorites
