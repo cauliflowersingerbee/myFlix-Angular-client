@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProfileDeleteComponent } from '../profile-delete/profile-delete.component';
 import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
+import { FavoriteMovieComponent } from '../favorite-movie/favorite-movie.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -36,19 +37,6 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  getFavMovies(): void {
-    let movies: any[] = [];
-    this.fetchApiData.getAllMovies().subscribe((res: any) => {
-      movies = res;
-      movies.forEach((movie: any) => {
-        if (this.user.FavoriteMovies.includes(movie._id)) {
-          this.favMovies.push(movie);
-        }
-      });
-    });
-    return this.favMovies;
-  }
-
   deregisterUser(): void {
     this.dialog.open(ProfileDeleteComponent, {
       width: '280px',
@@ -60,4 +48,11 @@ export class UserProfileComponent implements OnInit {
       width: '500px',
     });
   }
+
+  openFavoriteMovieDialog(): void {
+    this.dialog.open(FavoriteMovieComponent, {
+      width: '500px',
+    });
+  }
+
 }
