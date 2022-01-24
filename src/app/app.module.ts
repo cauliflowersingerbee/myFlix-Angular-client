@@ -34,6 +34,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 import { MovieDirectorComponent } from './movie-director/movie-director.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     LogoutComponent,
     MovieGenreComponent,
     MovieDirectorComponent,
+    MovieDetailsComponent,
   ],
   
   imports: [
