@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProfileDeleteComponent } from '../profile-delete/profile-delete.component';
 import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
-import { FavoriteMovieComponent } from '../favorite-movie/favorite-movie.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,7 +16,7 @@ import { FavoriteMovieComponent } from '../favorite-movie/favorite-movie.compone
 export class UserProfileComponent implements OnInit {
 
   user: any = {};
-  favMovies: any = {};
+  movies: any = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -45,12 +44,6 @@ export class UserProfileComponent implements OnInit {
 
   openEditProfileDialog(): void {
     this.dialog.open(ProfileEditComponent, {
-      width: '500px',
-    });
-  }
-
-  openFavoriteMovieDialog(): void {
-    this.dialog.open(FavoriteMovieComponent, {
       width: '500px',
     });
   }

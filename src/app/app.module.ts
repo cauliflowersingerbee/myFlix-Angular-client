@@ -32,7 +32,6 @@ import { MatListModule } from '@angular/material/list';
 import { ProfileDeleteComponent } from './profile-delete/profile-delete.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { LogoutComponent } from './logout/logout.component';
-import { FavoriteMovieComponent } from './favorite-movie/favorite-movie.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -54,7 +53,6 @@ const appRoutes: Routes = [
     ProfileDeleteComponent,
     ProfileEditComponent,
     LogoutComponent,
-    FavoriteMovieComponent,
   ],
   
   imports: [

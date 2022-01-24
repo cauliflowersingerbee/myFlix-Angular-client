@@ -98,16 +98,6 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-   // Making the api call to access favorite movies list
-  getFavorites(Username: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http
-      .get(apiUrl + `users/${Username}/movies`, {
-        headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
-      })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
-  }
-
    // Making the api call to add movie to favorites
    addFavorite(MovieID: any): Observable<any> {
     const token = localStorage.getItem('token');
@@ -117,6 +107,17 @@ export class FetchApiDataService {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+   // Making the api call to access favorite movies list
+   public getFavorites(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const user: any = JSON.parse(localStorage.getItem('user') || '');
+    const Username = user.Username;
+    const response = this.http.get(apiUrl + `/users/${Username}/movies`, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
+      })
+    return response.pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call to edit user
