@@ -3,6 +3,9 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { MovieDirectorComponent } from '../movie-director/movie-director.component';
+import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
 
 @Component({
   selector: 'app-movie-card',
