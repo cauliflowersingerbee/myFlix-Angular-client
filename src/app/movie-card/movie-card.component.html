@@ -28,7 +28,12 @@
             >
                 Synopsis
             </button>
-            <mat-icon>favorite_border</mat-icon>
+            <!--put mat-icon within button or link tags for accessibility 
+                as you would with <img> tag-->
+            <button (click)="toggleFavorite()" [color]="toggleLikeIcon()" aria-label="Button to add or remove movie from list of favorites">
+                <mat-icon aria-label="like icon">favorite_border</mat-icon>
+            </button>
+            
         </mat-card-actions>
     </mat-card>
 </div>
