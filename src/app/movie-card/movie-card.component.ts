@@ -89,7 +89,7 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
-    openGenreDialog(name: string, description: string): void {
+    openGenreDialog(Name: string, Description: string): void {
       this.dialog.open(MovieGenreComponent, {
         data: { Name: Name, Description: Description },
         width: '250px' 
@@ -97,14 +97,14 @@ export class MovieCardComponent implements OnInit {
     } 
    
   
-    openDirectorDialog(name: string, bio: string, birth: string, death: string): void {
+    openDirectorDialog(Name: string, Bio: string, Birth: string, Death: string): void {
       this.dialog.open(MovieDirectorComponent, {
         data: { Name: Name, Bio: Bio, Birth: Birth, Death: Death },
         width: '250px' 
       });
     }
    
-    openMovieDetailsDialog(title: string, description: string): void {
+    openMovieDetailsDialog(Title: string, Description: string): void {
       this.dialog.open(MovieDetailsComponent, {
         data: { Title: Title, Description: Description },
         width: '250px' 
