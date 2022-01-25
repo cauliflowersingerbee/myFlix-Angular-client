@@ -1,7 +1,4 @@
 
-<h2> Welcome {{user.Username}}! </h2>
-
-
 <div style="display: flex;">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
         <mat-card-header>
@@ -12,26 +9,32 @@
         <mat-card-actions>
             <button
                 mat-button
+                id="genre"
                 color="primary"
+                (click)="openMovieGenreDialog"
             >
                 Genre
             </button>
             <button
                 mat-button
+                id="director"
                 color="primary"
+                (click)="openMovieGenreDialog"
             >
                 Director
             </button>
             <button
                 mat-button
+                id="details"
                 color="primary"
+                (click)="openMovieDetailsDialog"
             >
-                Synopsis
+                More Details
             </button>
             <!--put mat-icon within button or link tags for accessibility 
                 as you would with <img> tag-->
-            <button (click)="toggleFavorite()" [color]="toggleLikeIcon()" aria-label="Button to add or remove movie from list of favorites">
-                <mat-icon aria-label="like icon">favorite_border</mat-icon>
+            <button (click)="toggleFavorite(movie._id, movie.Title)" aria-label="Button to add or remove movie from list of favorites">
+                <mat-icon [color]="toggleLikeIcon(movie._id)" aria-label="like icon">favorite_border</mat-icon>
             </button>
             
         </mat-card-actions>

@@ -16,7 +16,7 @@ export class MovieCardComponent implements OnInit {
   
   user = localStorage.getItem('user');
   movies: any[] = [];
-  favorites: any[] = [];: any = {};
+  favorites: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -61,14 +61,14 @@ export class MovieCardComponent implements OnInit {
     }
 
     addFavorite(movieID: string, title: string): void {
-      this.fetchApiData.addFavourite(this.username!, movieID).subscribe((resp: any) => { 
-        this.favourites = resp;
-        this.snackBar.open(`${title} has been added to your favourites!`, 'Cool!', 
+      this.fetchApiData.addFavorite(this.user!).subscribe((resp: any) => { 
+        this.favorites = resp;
+        this.snackBar.open(`${title} was added to favorites!`, 'OK!', 
           { duration: 4000, panelClass: 'snack-style' }
         );
       },  (result) => {
           console.log(result);
-          this.snackBar.open(`Hmm, we couldn't add ${title} to favourites. Please try again`, 'Ok',
+          this.snackBar.open(`Something went wrong. ${title} was not successfully added to favorites.`, 'Ok',
             { duration: 4000, panelClass: 'snack-style' }
           ); 
       });
@@ -76,12 +76,12 @@ export class MovieCardComponent implements OnInit {
   
    
     deleteFavorite(movieID: string, title: string): void {
-      this.fetchApiData.deleteFavourite(this.username!, movieID).subscribe((resp: any) => { 
-        this.favourites = resp;
+      this.fetchApiData.deleteFavorite(this.user!).subscribe((resp: any) => { 
+        this.favorites = resp;
         this.snackBar.open(`${title} has been removed from your favourites!`, 'Ok',
           { duration: 4000, panelClass: 'snack-style' }
         );
-      },  (result) => {
+      },  (result: any) => {
           console.log(result);
           this.snackBar.open(`Hmm, we couldn't unfavourite ${title}. Please try again`, 'Ok', 
             { duration: 4000, panelClass: 'snack-style' }
@@ -89,7 +89,7 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
-    openGenreDialog(Name: string, Description: string): void {
+    openMovieGenreDialog(Name: string, Description: string): void {
       this.dialog.open(MovieGenreComponent, {
         data: { Name: Name, Description: Description },
         width: '250px' 
@@ -97,7 +97,7 @@ export class MovieCardComponent implements OnInit {
     } 
    
   
-    openDirectorDialog(Name: string, Bio: string, Birth: string, Death: string): void {
+    openMovieDirectorDialog(Name: string, Bio: string, Birth: string, Death: string): void {
       this.dialog.open(MovieDirectorComponent, {
         data: { Name: Name, Bio: Bio, Birth: Birth, Death: Death },
         width: '250px' 

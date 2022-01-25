@@ -146,15 +146,14 @@ export class FetchApiDataService {
   }
 
   // Making the api call to delete movie from favorites
-  //deleteFavoriteMovie(MovieID: any): Observable<any> {
-    //const token = localStorage.getItem('token');
-   // const Username = localStorage.getItem('Username');
-    //return this.http
-    //  .delete(apiUrl + `users/${Username}/movies/${MovieID}`, {
-    //    headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
-    //  })
-    //  .pipe(map(this.extractResponseData), catchError(this.handleError));
-  //}
+  deleteFavorite(MovieID: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const Username = localStorage.getItem('Username');
+    const resp = this.http.delete(apiUrl + `users/${Username}/movies/${MovieID}`, {
+    headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
+    })
+    return resp.pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
 
 // Non-typed response extraction
   private extractResponseData(response: any): any {
