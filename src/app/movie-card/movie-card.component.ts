@@ -13,8 +13,10 @@ import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
+  
+  user = localStorage.getItem('user');
   movies: any[] = [];
-  user: any = {};
+  favorites: any[] = [];: any = {};
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -44,6 +46,17 @@ export class MovieCardComponent implements OnInit {
       });
     }
   
+    toggleFavorite(movieID: string, title: string): void {
+      let movieIds = this.favorites.map(fav => { return fav._id });
+      if (movieIds.includes(movieID)) {
+        this.deleteFavorite(movieID, title);
+      } else {
+        this.addFavourite(movieID, title);
+      }
     }
 
-
+    toggleLikeIcon(movieID: string): string {
+      let movieIds = this.favorites.map(fav => { return fav._id });
+      return movieIds.includes(movieID) ? 'warn' : 'accent';
+    }
+    }
