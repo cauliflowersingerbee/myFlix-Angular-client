@@ -31,11 +31,34 @@
             >
                 More Details
             </button>
+
+            <button
+                mat-button
+                id="add-fav"
+                color="primary"
+                (click)="addFavorite(movie._id, movie.Title)"
+            >
+                Add to Favorites
+            </button>
+
+            <button
+                mat-button
+                id="rm-fav"
+                color="primary"
+                (click)="deleteFavorite(movie._id, movie.Title)"
+            >
+                Delete from Favorites
+            </button>
+
+
             <!--put mat-icon within button or link tags for accessibility 
                 as you would with <img> tag-->
-            <button (click)="toggleFavorite(movie._id, movie.Title)" aria-label="Button to add or remove movie from list of favorites">
-                <mat-icon [color]="toggleLikeIcon(movie._id)" aria-label="like icon">favorite_border</mat-icon>
+            <!--
+                <button (click)="toggleFavorite(movie._id, movie.Title)" aria-label="Button to add or remove movie from list of favorites">
+                <mat-icon aria-label="like icon">favorite_border</mat-icon>
             </button>
+        -->
+             
             
         </mat-card-actions>
     </mat-card>

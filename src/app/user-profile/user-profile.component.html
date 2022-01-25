@@ -10,10 +10,18 @@
         <p><b>Username</b>: {{ user.Username }}</p>
         <p><b>Email</b>: {{ user.Email }}</p>
         <p><b>Birthday</b>: {{ user.Birthday | date}}</p>
-        <p><b>Favorite Movie</b>: {{ user.FavoriteMovie }}</p>
       </mat-card-content>
 
+      
       <mat-card-actions>
+        <button
+        mat-button
+        id="get-fav"
+        color="primary"
+        (click)="getFavoriteMovies()"
+    >
+        See your Favorite Movies
+    </button>
         <button
           class="float-right"
           mat-raised-button

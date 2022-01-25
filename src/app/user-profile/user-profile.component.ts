@@ -17,6 +17,9 @@ export class UserProfileComponent implements OnInit {
 
   user: any = {};
   movies: any = [];
+  favorites: any[] = [];
+  
+  
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -36,6 +39,15 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  getFavoriteMovies() : void {
+    const user = JSON.parse(localStorage.getItem('user') || '');
+    this.fetchApiData.getUser(user.Username)
+    .subscribe((resp: any) => { 
+      this.favorites = user.FavoriteMovie 
+    });
+    console.log(user.FavoriteMovie);
+
+  }
   deregisterUser(): void {
     this.dialog.open(ProfileDeleteComponent, {
       width: '280px',

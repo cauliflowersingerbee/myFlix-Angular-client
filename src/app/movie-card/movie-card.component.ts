@@ -46,45 +46,40 @@ export class MovieCardComponent implements OnInit {
       });
     }
   
-    toggleFavorite(movieID: string, title: string): void {
-      let movieIds = this.favorites.map(fav => { return fav._id });
-      if (movieIds.includes(movieID)) {
-        this.deleteFavorite(movieID, title);
+    toggleFavorite(MovieID: string, title: string): void {
+      let favID = this.favorites.map(fav => { return fav._id });
+      if (favID.includes(MovieID)) {
+        this.deleteFavorite(MovieID, title);
       } else {
-        this.addFavorite(movieID, title);
+        this.addFavorite(MovieID, title);
       }
     }
 
-    toggleLikeIcon(movieID: string): string {
-      let movieIds = this.favorites.map(fav => { return fav._id });
-      return movieIds.includes(movieID) ? 'warn' : 'accent';
-    }
-
-    addFavorite(movie: string, title: string): void {
-      this.fetchApiData.addFavorite(this.user!).subscribe((resp: any) => { 
+    addFavorite(MovieID: string, title: string): void {
+      this.fetchApiData.addFavorite(MovieID).subscribe((resp: any) => { 
         this.favorites = resp;
         this.snackBar.open(`${title} was added to favorites!`, 'OK!', 
-          { duration: 4000, panelClass: 'snack-style' }
+          { duration: 1000, panelClass: 'snack-style' }
         );
       },  (result) => {
           console.log(result);
           this.snackBar.open(`Something went wrong. ${title} was not successfully added to favorites.`, 'Ok',
-            { duration: 4000, panelClass: 'snack-style' }
+            { duration: 1000, panelClass: 'snack-style' }
           ); 
       });
     }
   
    
-    deleteFavorite(movie: string, title: string): void {
-      this.fetchApiData.deleteFavorite(this.user!).subscribe((resp: any) => { 
+    deleteFavorite(MovieID: string, title: string): void {
+      this.fetchApiData.deleteFavorite(MovieID).subscribe((resp: any) => { 
         this.favorites = resp;
         this.snackBar.open(`${title} has been removed from your favourites!`, 'Ok',
-          { duration: 4000, panelClass: 'snack-style' }
+          { duration: 1000, panelClass: 'snack-style' }
         );
       },  (result: any) => {
           console.log(result);
-          this.snackBar.open(`Hmm, we couldn't unfavourite ${title}. Please try again`, 'Ok', 
-            { duration: 4000, panelClass: 'snack-style' }
+          this.snackBar.open(`Something went wrong. ${title} wasn't removed from favorites!`, 'Ok', 
+            { duration: 1000, panelClass: 'snack-style' }
           ); 
       });
     }
