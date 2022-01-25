@@ -60,7 +60,7 @@ export class MovieCardComponent implements OnInit {
       return movieIds.includes(movieID) ? 'warn' : 'accent';
     }
 
-    addFavorite(movieID: string, title: string): void {
+    addFavorite(movie: string, title: string): void {
       this.fetchApiData.addFavorite(this.user!).subscribe((resp: any) => { 
         this.favorites = resp;
         this.snackBar.open(`${title} was added to favorites!`, 'OK!', 
@@ -75,7 +75,7 @@ export class MovieCardComponent implements OnInit {
     }
   
    
-    deleteFavorite(movieID: string, title: string): void {
+    deleteFavorite(movie: string, title: string): void {
       this.fetchApiData.deleteFavorite(this.user!).subscribe((resp: any) => { 
         this.favorites = resp;
         this.snackBar.open(`${title} has been removed from your favourites!`, 'Ok',

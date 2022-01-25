@@ -135,22 +135,22 @@ export class FetchApiDataService {
  }
 
   // Making the api call to add movie to favorites
-  addFavorite(MovieID: any): Observable<any> {
+  addFavorite(movie: any): Observable<any> {
     const token = localStorage.getItem('token');
     const user: any = JSON.parse(localStorage.getItem('user') || '');
     const Username = user.Username;
-    const resp = this.http.post(apiUrl + `users/${Username}/movies/${MovieID}`, {
+    const resp = this.http.post(apiUrl + `/users/${Username}/movies/${movie._id}`, {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
       })
       return resp.pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call to delete movie from favorites
-  deleteFavorite(MovieID: any): Observable<any> {
+  deleteFavorite(movie: any): Observable<any> {
     const token = localStorage.getItem('token');
     const Username = localStorage.getItem('Username');
-    const resp = this.http.delete(apiUrl + `users/${Username}/movies/${MovieID}`, {
-    headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
+    const resp = this.http.delete(apiUrl + `/users/${Username}/movies/${movie._id}`, {
+    headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
     })
     return resp.pipe(map(this.extractResponseData), catchError(this.handleError));
   }
@@ -160,7 +160,7 @@ export class FetchApiDataService {
     const body = response;
     return body || { };
   }
-
+ 
 
 private handleError(error: HttpErrorResponse): Observable<any> {
     if (error.error instanceof ErrorEvent) {
