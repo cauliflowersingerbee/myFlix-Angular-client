@@ -51,7 +51,7 @@ export class MovieCardComponent implements OnInit {
       if (movieIds.includes(movieID)) {
         this.deleteFavorite(movieID, title);
       } else {
-        this.addFavourite(movieID, title);
+        this.addFavorite(movieID, title);
       }
     }
 
@@ -59,4 +59,56 @@ export class MovieCardComponent implements OnInit {
       let movieIds = this.favorites.map(fav => { return fav._id });
       return movieIds.includes(movieID) ? 'warn' : 'accent';
     }
+
+    addFavorite(movieID: string, title: string): void {
+      this.fetchApiData.addFavourite(this.username!, movieID).subscribe((resp: any) => { 
+        this.favourites = resp;
+        this.snackBar.open(`${title} has been added to your favourites!`, 'Cool!', 
+          { duration: 4000, panelClass: 'snack-style' }
+        );
+      },  (result) => {
+          console.log(result);
+          this.snackBar.open(`Hmm, we couldn't add ${title} to favourites. Please try again`, 'Ok',
+            { duration: 4000, panelClass: 'snack-style' }
+          ); 
+      });
+    }
+  
+   
+    deleteFavorite(movieID: string, title: string): void {
+      this.fetchApiData.deleteFavourite(this.username!, movieID).subscribe((resp: any) => { 
+        this.favourites = resp;
+        this.snackBar.open(`${title} has been removed from your favourites!`, 'Ok',
+          { duration: 4000, panelClass: 'snack-style' }
+        );
+      },  (result) => {
+          console.log(result);
+          this.snackBar.open(`Hmm, we couldn't unfavourite ${title}. Please try again`, 'Ok', 
+            { duration: 4000, panelClass: 'snack-style' }
+          ); 
+      });
+    }
+
+    openGenreDialog(name: string, description: string): void {
+      this.dialog.open(MovieGenreComponent, {
+        data: { Name: Name, Description: Description },
+        width: '250px' 
+      });
+    } 
+   
+  
+    openDirectorDialog(name: string, bio: string, birth: string, death: string): void {
+      this.dialog.open(MovieDirectorComponent, {
+        data: { Name: Name, Bio: Bio, Birth: Birth, Death: Death },
+        width: '250px' 
+      });
+    }
+   
+    openMovieDetailsDialog(title: string, description: string): void {
+      this.dialog.open(MovieDetailsComponent, {
+        data: { Title: Title, Description: Description },
+        width: '250px' 
+      });
+    }
+
     }
