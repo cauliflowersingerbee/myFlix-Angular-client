@@ -24,16 +24,31 @@ export class FavoriteMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getFavoriteMovies();
+    
   }
+
+
+  getMovies(): void {
+    this.fetchApiData.getAllMovies()
+    .subscribe((resp: any) => {
+        this.movies = resp;
+        console.log(this.movies);
+        
+      });
+    }
+
 
   getFavoriteMovies() : void {
     const user = JSON.parse(localStorage.getItem('user') || '');
     this.fetchApiData.getUser(user.Username)
     .subscribe((resp: any) => { 
-      this.favorites = user.FavoriteMovie 
+      this.favorites = resp.FavoriteMovie;
+      return (user.FavoriteMovie);
     }
     );
     console.log(user.FavoriteMovie);
 
   }
+
 }
