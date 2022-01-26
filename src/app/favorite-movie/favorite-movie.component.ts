@@ -25,6 +25,7 @@ export class FavoriteMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFavoriteMovies();
+    this.getMovies;
     
   }
 
@@ -44,11 +45,15 @@ export class FavoriteMovieComponent implements OnInit {
     this.fetchApiData.getUser(user.Username)
     .subscribe((resp: any) => { 
       this.favorites = resp.FavoriteMovie;
-      return (user.FavoriteMovie);
+      if (this.favorites.length === 0) {
+        `You have no favorite movies`
+      } else if (this.favorites.length > 0 && 
+        (this.movies.map((movie: any) => {movie._id ===
+          this.favorites.find((fav) => fav === movie._id)}
+    ))) {
+      console.log(this.movies.Title);
+      return this.movies.Title;
     }
-    );
-    console.log(user.FavoriteMovie);
-
+   })
   }
-
 }
