@@ -25,7 +25,7 @@ export class FavoriteMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFavoriteMovies();
-    this.getMovies;
+    this.getMovies();
     
   }
 
