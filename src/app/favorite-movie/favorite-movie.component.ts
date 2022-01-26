@@ -42,18 +42,18 @@ export class FavoriteMovieComponent implements OnInit {
 
   getFavoriteMovies() : void {
     const user = JSON.parse(localStorage.getItem('user') || '');
-    this.fetchApiData.getUser(user.Username)
-    .subscribe((resp: any) => { 
-      this.favorites = resp.FavoriteMovie;
-      if (this.favorites.length === 0) {
-        `You have no favorite movies`
-      } else if (this.favorites.length > 0 && 
-        (this.movies.map((movie: any) => {movie._id ===
-          this.favorites.find((fav) => fav === movie._id)}
-    ))) {
-      console.log(this.movies.Title) ;
-      return this.movies.Title;
+    this.getMovies();
+    
+    //this.fetchApiData.getUser(user.Username)
+    //.subscribe((resp: any) => { 
+      //this.favorites = resp.FavoriteMovie;
+      //if (this.favorites.length === 0) {
+     //   `You have no favorite movies`
+     // } else if (this.favorites.length > 0 && 
+     //   (this.movies.map((movie: any) => {movie._id ===
+     //     this.favorites.find((fav) => fav === movie._id)}
+    //))) {
+    //  console.log(this.movies.Title) ;
+    //  return this.movies.Title;
     }
-   })
-  }
 }
