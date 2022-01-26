@@ -11,7 +11,9 @@
                 mat-button
                 id="genre"
                 color="primary"
-                (click)="openMovieGenreDialog"
+                (click)="openMovieGenreDialog(
+                    movie.Genre.Name, 
+                    movie.Genre.Description)"
             >
                 Genre
             </button>
@@ -19,7 +21,11 @@
                 mat-button
                 id="director"
                 color="primary"
-                (click)="openMovieGenreDialog"
+                (click)="openMovieDirectorDialog(
+                    movie.Director.Name,
+                    movie.Director.Bio,
+                    movie.Director.Birth,
+                    movie.Director.Death)"
             >
                 Director
             </button>
@@ -27,7 +33,9 @@
                 mat-button
                 id="details"
                 color="primary"
-                (click)="openMovieDetailsDialog"
+                (click)="openMovieDetailsDialog(
+                    movie.Title,
+                    movie.Description)"
             >
                 More Details
             </button>

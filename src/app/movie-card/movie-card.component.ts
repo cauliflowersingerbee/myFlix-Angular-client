@@ -45,19 +45,11 @@ export class MovieCardComponent implements OnInit {
         this.user = res;
       });
     }
-  
-    toggleFavorite(MovieID: string, title: string): void {
-      let favID = this.favorites.map(fav => { return fav._id });
-      if (favID.includes(MovieID)) {
-        this.deleteFavorite(MovieID, title);
-      } else {
-        this.addFavorite(MovieID, title);
-      }
-    }
 
     addFavorite(MovieID: string, title: string): void {
       this.fetchApiData.addFavorite(MovieID).subscribe((resp: any) => { 
         this.favorites = resp;
+        console.log(resp);
         this.snackBar.open(`${title} was added to favorites!`, 'OK!', 
           { duration: 1000, panelClass: 'snack-style' }
         );
@@ -73,6 +65,7 @@ export class MovieCardComponent implements OnInit {
     deleteFavorite(MovieID: string, title: string): void {
       this.fetchApiData.deleteFavorite(MovieID).subscribe((resp: any) => { 
         this.favorites = resp;
+        console.log(resp);
         this.snackBar.open(`${title} has been removed from your favourites!`, 'Ok',
           { duration: 1000, panelClass: 'snack-style' }
         );
@@ -86,7 +79,7 @@ export class MovieCardComponent implements OnInit {
 
     openMovieGenreDialog(Name: string, Description: string): void {
       this.dialog.open(MovieGenreComponent, {
-        data: { Name: Name, Description: Description },
+        data: { Name, Description },
         width: '250px' 
       });
     } 
@@ -94,14 +87,14 @@ export class MovieCardComponent implements OnInit {
   
     openMovieDirectorDialog(Name: string, Bio: string, Birth: string, Death: string): void {
       this.dialog.open(MovieDirectorComponent, {
-        data: { Name: Name, Bio: Bio, Birth: Birth, Death: Death },
+        data: { Name, Bio, Birth, Death },
         width: '250px' 
       });
     }
    
     openMovieDetailsDialog(Title: string, Description: string): void {
       this.dialog.open(MovieDetailsComponent, {
-        data: { Title: Title, Description: Description },
+        data: { Title, Description },
         width: '250px' 
       });
     }
