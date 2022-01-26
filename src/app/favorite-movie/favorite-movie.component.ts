@@ -51,8 +51,8 @@ export class FavoriteMovieComponent implements OnInit {
         (this.movies.map((movie: any) => {movie._id ===
           this.favorites.find((fav) => fav === movie._id)}
     ))) {
-      console.log(this.movies.Title);
-      return this.movies.Title;
+      console.log(this.movies);
+      return this.movies;
     }
    })
   }
