@@ -17,9 +17,10 @@
       
       <mat-card-actions>
         <button
-        mat-button
+        class="float-right"
+        mat-raised-button
         id="get-fav"
-        color="primary"
+        color="accent"
         (click)="openFavoriteMovieDialog()"
     >
         See your Favorite Movies
@@ -30,10 +31,13 @@
           color="primary"
           (click)="openEditProfileDialog()"
         >
-          Edit
+          Edit Profile
         </button>
-        <button mat-raised-button color="accent" (click)="deregisterUser()">
-          Delete
+        <button 
+        mat-raised-button 
+        color="warn" 
+        (click)="deregisterUser()">
+          Delete Profile
         </button>
       </mat-card-actions>
     </mat-card>
