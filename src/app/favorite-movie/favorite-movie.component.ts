@@ -28,7 +28,7 @@ export class FavoriteMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFavorites();
+    //this.getFavorites();
     this.getUserDetails();
   } 
 
@@ -38,8 +38,8 @@ export class FavoriteMovieComponent implements OnInit {
       this.user = res;
       //adding list of favorite movies to local state
       this.favoriteIds = res.FavoriteMovie;
-      console.log(user.Username);
-      //adding movies to local state
+      console.log(this.favoriteIds);
+      //callinf movies 
       this.getMovies();
     });
   }
@@ -50,7 +50,7 @@ export class FavoriteMovieComponent implements OnInit {
         this.movies = resp;
         console.log(resp);
         //calling favorites
-        this.getFavorites()
+        this.getFavorites();
       });
     }
 
