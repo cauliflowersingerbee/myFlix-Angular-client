@@ -29,8 +29,8 @@ export class FavoriteMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFavorites();
-    this.getUserDetails()
-  }
+    this.getUserDetails();
+  } 
 
   getUserDetails() : void {
     const user = JSON.parse(localStorage.getItem('user') || '');
@@ -38,7 +38,7 @@ export class FavoriteMovieComponent implements OnInit {
       this.user = res;
       //adding list of favorite movies to local state
       this.favoriteIds = res.FavoriteMovie;
-      console.log(this.user);
+      console.log(user.Username);
       //adding movies to local state
       this.getMovies();
     });
