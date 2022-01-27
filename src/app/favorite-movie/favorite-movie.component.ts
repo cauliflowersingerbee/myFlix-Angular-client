@@ -25,8 +25,8 @@ export class FavoriteMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getMovies();
-    this.getFavoriteMovies();
+    //this.getMovies();
+    this.getFavorites();
     
   }
 
@@ -46,28 +46,51 @@ export class FavoriteMovieComponent implements OnInit {
       });
     }
 
+    getFavorites() : void {
+      //const user = JSON.parse(localStorage.getItem('user') || '');
+      this.getMovies();
+      this.fetchApiData.getFavorites().subscribe((resp: any) => {
+        this.favorites = resp;
+        console.log(resp);
+        if (this.favorites.length === 0) 
+          {return 'You have no favorite movies'} 
     
-
-  getFavoriteMovies() : void {
-    const user = JSON.parse(localStorage.getItem('user') || '');
-    this.getMovies();
-    this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
-    this.favorites = resp.FavoriteMovie;
-      console.log('this.favorites', this.favorites)
-      console.log('this.movies', this.movies);
-    if (this.favorites.length === 0) 
-      {return 'You have no favorite movies'} 
-    else if (this.movies.map((movie: any) => {movie._id ===
+      else if (this.movies.map((movie: any) => {movie._id ===
        this.favorites.find((fav) => fav === movie._id);
-    })) 
-    {let array = this.favorites.map((fav) => 
-      {return this.movies.find((movie: any) => movie._id === fav);
-    });
+      })) 
+          {let array = this.favorites.map((fav) => 
+            {return this.movies.find((movie: any) => movie._id === fav);
+          });
     console.log(array) ;
     return array;
     }
     return
-  } )
+      }
+      )
+
+    }
+    
+
+  //getFavoriteMovies() : void {
+    //const user = JSON.parse(localStorage.getItem('user') || '');
+    //this.getMovies();
+   // this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
+    //this.favorites = resp.FavoriteMovie;
+    //  console.log('this.favorites', this.favorites)
+   //   console.log('this.movies', this.movies);
+   // if (this.favorites.length === 0) 
+   //   {return 'You have no favorite movies'} 
+    //else if (this.movies.map((movie: any) => {movie._id ===
+    //   this.favorites.find((fav) => fav === movie._id);
+    //})) 
+    //{let array = this.favorites.map((fav) => 
+     // {return this.movies.find((movie: any) => movie._id === fav);
+   // });
+    //console.log(array) ;
+    //return array;
+   // }
+   // return
+ // } )
 }
 
-}
+
