@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class FavoriteMovieComponent implements OnInit {
 
+  //user: any = JSON.parse(localStorage.getItem('user') || '');
   user: any = {};
   movies: any = [];
   favorites: any[] = [];
@@ -24,36 +25,49 @@ export class FavoriteMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getMovies();
     this.getFavoriteMovies();
-    this.getMovies;
     
   }
 
+  getUserDetails() : void {
+    const user = JSON.parse(localStorage.getItem('user') || '');
+    this.fetchApiData.getUser(user.Username).subscribe((res: any) => {
+      this.user = res;
+    });
+  }
 
   getMovies(): void {
     this.fetchApiData.getAllMovies()
     .subscribe((resp: any) => {
         this.movies = resp;
-        console.log(this.movies);
+        console.log(resp);
         
       });
     }
 
+    
 
   getFavoriteMovies() : void {
     const user = JSON.parse(localStorage.getItem('user') || '');
     this.getMovies();
-    
-    //this.fetchApiData.getUser(user.Username)
-    //.subscribe((resp: any) => { 
-      //this.favorites = resp.FavoriteMovie;
-      //if (this.favorites.length === 0) {
-     //   `You have no favorite movies`
-     // } else if (this.favorites.length > 0 && 
-     //   (this.movies.map((movie: any) => {movie._id ===
-     //     this.favorites.find((fav) => fav === movie._id)}
-    //))) {
-    //  console.log(this.movies.Title) ;
-    //  return this.movies.Title;
+    this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
+    this.favorites = resp.FavoriteMovie;
+      console.log('this.favorites', this.favorites)
+      console.log('this.movies', this.movies);
+    if (this.favorites.length === 0) 
+      {return 'You have no favorite movies'} 
+    else if (this.movies.map((movie: any) => {movie._id ===
+       this.favorites.find((fav) => fav === movie._id);
+    })) 
+    {let array = this.favorites.map((fav) => 
+      {return this.movies.find((movie: any) => movie._id === fav);
+    });
+    console.log(array) ;
+    return array;
     }
+    return
+  } )
+}
+
 }
