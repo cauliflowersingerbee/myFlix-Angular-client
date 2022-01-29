@@ -1,0 +1,44 @@
+<app-main-nav></app-main-nav>
+
+<div class="user-profile-wrapper">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Hi {{ user.Username }}</h2></mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content class="card-content">
+        <p>Your profile details are:</p>
+        <p><b>Username</b>: {{ user.Username }}</p>
+        <p><b>Email</b>: {{ user.Email }}</p>
+        <p><b>Birthday</b>: {{ user.Birthday | date}}</p>
+      </mat-card-content>
+
+      
+      <mat-card-actions>
+        <button
+        class="float-right"
+        mat-raised-button
+        id="get-fav"
+        color="accent"
+        (click)="openFavoriteMovieDialog()"
+    >
+        See your Favorite Movies
+    </button>
+        <button
+          class="float-right"
+          mat-raised-button
+          color="primary"
+          (click)="openEditProfileDialog()"
+        >
+          Edit Profile
+        </button>
+        <button 
+        mat-raised-button 
+        color="warn" 
+        (click)="deregisterUser()">
+          Delete Profile
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
