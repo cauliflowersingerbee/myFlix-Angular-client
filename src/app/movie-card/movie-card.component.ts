@@ -1,3 +1,14 @@
+
+/**
+ * @file contains logic to build movie display cards. 
+ * Connects movie-director, movie-genre, and movie-detail
+ * components. 
+ * Upon clicking on a particular movie, users will be 
+ * taken to a single movie view, where additional movie 
+ * details will be displayed. 
+ */
+
+
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
@@ -31,6 +42,12 @@ export class MovieCardComponent implements OnInit {
 
   }
 
+  /**
+   * use http request to retrieve data about all movies
+   * @function getMovies
+   * @return movies in json format
+   * then bind movies to local movie state
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
         this.movies = resp;
@@ -39,6 +56,12 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
+    /**
+   * use http request to retrieve data about all movies
+   * @function getMovies
+   * @return movies in json format
+   * then bind movies to local movie state
+   */
      getUserDetails() : void {
       const user = JSON.parse(localStorage.getItem('user') || '');
       this.fetchApiData.getUser(user.Username).subscribe((res: any) => {
