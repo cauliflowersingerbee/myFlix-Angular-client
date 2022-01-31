@@ -1,3 +1,8 @@
+/**
+ * @file contains logic to enable user 
+ * update their profile information.
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
@@ -13,8 +18,11 @@ export class ProfileEditComponent implements OnInit {
 
   //user = localStorage.getItem('user') || '';
   
+/**
+ * decorator to define the component's input and
+ * bind it to userData object
+ */
 
-//decorator to define the component's input (user data)
 @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
   constructor(
 
@@ -28,8 +36,17 @@ export class ProfileEditComponent implements OnInit {
     
   }
 
-  // This is the function responsible for sending the form inputs to the backend
-editUser(): void {
+/**
+   * updates the user information
+   * @function editUser
+   * @param userData {any}
+   * @return updated user details in json format
+   * which is then stored in localstorage. 
+   * After, a brief message appears informing user
+   * if the attempt to update their details was successful 
+   * or not.
+   */  
+ editUser(): void {
   
   this.fetchApiData.updateUser(this.userData).subscribe((res: any) => {
        this.dialogRef.close(); // This will close the modal on success!
