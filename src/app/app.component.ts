@@ -1,4 +1,6 @@
-// src/app/app.component.ts
+/**
+ * @file contains logic for creating the app's root component. 
+ */
 import { Component } from '@angular/core';
 
 @Component({
