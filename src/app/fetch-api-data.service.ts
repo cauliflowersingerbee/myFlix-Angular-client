@@ -2,6 +2,7 @@
  * @file contains logic to enable app to make http requests
  * that connect client server to backend API in order to sign up 
  * for an account, sign in, edit profile, delete profile, etc
+ * @module FetchApiDataService
  */
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';

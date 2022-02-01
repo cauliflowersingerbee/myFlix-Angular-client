@@ -1,5 +1,6 @@
 /**
  * @file contains logic for creating the app's root component. 
+ * @module AppComponent
  */
 import { Component } from '@angular/core';
 

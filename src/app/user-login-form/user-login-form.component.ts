@@ -1,6 +1,7 @@
 /**
  * @file contains logic to enable a user to sign into their
  * profile
+ * @module UserLoginFormComponent
  */
 
 import { Component, OnInit, Input } from '@angular/core';

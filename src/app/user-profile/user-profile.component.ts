@@ -1,6 +1,7 @@
 /**
  * @file contains logic that allows users to 
  * view/edit their profile.
+ * @module UserProfileComponent
  */
 
 import { Component, OnInit } from '@angular/core';

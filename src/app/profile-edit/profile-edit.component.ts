@@ -1,6 +1,7 @@
 /**
  * @file contains logic to enable user 
  * update their profile information.
+ * @module ProfileEditComponent
  */
 
 import { Component, OnInit, Input } from '@angular/core';

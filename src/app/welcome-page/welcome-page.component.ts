@@ -2,6 +2,7 @@
  * @file contains logic for welcome page where 
  * user can either register an account or sign in 
  * to their profile
+ * @module WelcomePageComponent
  */
 import { Component, OnInit } from '@angular/core';
 import { UserLoginFormComponent } from '../user-login-form/user-login-form.component';

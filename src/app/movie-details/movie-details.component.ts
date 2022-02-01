@@ -1,3 +1,7 @@
+/**
+ * @file contains logic for movie details component
+ * @module MovieDetailsComponent
+ */
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 

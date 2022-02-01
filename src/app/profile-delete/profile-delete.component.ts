@@ -1,6 +1,7 @@
 
 /**
  * @file contains logic to enable user delete their profile 
+ * @module ProfileDeleteComponent
  */
 
 import { Component, OnInit, Input } from '@angular/core';

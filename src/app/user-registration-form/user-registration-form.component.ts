@@ -1,6 +1,7 @@
 /**
  * @file contains logic to allow a user to register
  * for an account
+ * @module UserRegistrationFormComponent
  */
 
 import { Component, OnInit, Input } from '@angular/core';

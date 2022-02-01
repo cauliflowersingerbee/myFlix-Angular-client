@@ -2,6 +2,7 @@
  * @file contains logic to enable user 
  * to click a button and see more information about
  * a movie's genre.
+ * @module MovieGenreComponent
  */
 
 import { Component, OnInit, Inject } from '@angular/core';

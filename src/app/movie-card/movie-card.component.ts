@@ -6,6 +6,7 @@
  * Upon clicking on a particular movie, users will be 
  * taken to a single movie view, where additional movie 
  * details will be displayed. 
+ * @module MovieCardComponent
  */
 
 
