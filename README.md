@@ -1,4 +1,6 @@
 # MyFlixAngularClient
+![myflix-angular](https://user-images.githubusercontent.com/86426968/152058371-073b155b-3198-49e9-b856-ff44ab40e3cb.gif)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
