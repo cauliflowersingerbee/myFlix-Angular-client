@@ -43,7 +43,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-   * use http request to retrieve data about all movies
+   * using the http request to retrieve data about all movies
    * @function getMovies
    * @return movies in json format
    * then bind movies to local movie state
@@ -56,11 +56,11 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
-    /**
-   * use http request to retrieve data about all movies
+  /**
+   * using the http request to retrieve data about all movies
    * @function getMovies
    * @return movies in json format
-   * then bind movies to local movie state
+   * then store movies to local movie state
    */
      getUserDetails() : void {
       const user = JSON.parse(localStorage.getItem('user') || '');
@@ -68,6 +68,16 @@ export class MovieCardComponent implements OnInit {
         this.user = res;
       });
     }
+
+    /**
+     * using the http request to add a movie to
+     *  array of user's favorite movies
+     * @function addFavorite
+     * @param MovieID {string}
+     * @param title {string}
+     * Brief message pops up to inform user if 
+     * movie was added to favorites or not
+     */
 
     addFavorite(MovieID: string, title: string): void {
       this.fetchApiData.addFavorite(MovieID).subscribe((resp: any) => { 
@@ -84,7 +94,13 @@ export class MovieCardComponent implements OnInit {
       });
     }
   
-   
+   /**
+    * using the http request to delete a movie from user's list of 
+    * favorites
+    * @function deleteFavorite
+    * @param MovieID 
+    * @param title 
+    */
     deleteFavorite(MovieID: string, title: string): void {
       this.fetchApiData.deleteFavorite(MovieID).subscribe((resp: any) => { 
         this.favorites = resp;
@@ -100,6 +116,13 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
+    /**
+     * logic for popup message when user wants to see more
+     * details about movie genre
+     * @method openMovieGenreDialog
+     * @param Name 
+     * @param Description 
+     */
     openMovieGenreDialog(Name: string, Description: string): void {
       this.dialog.open(MovieGenreComponent, {
         data: { Name, Description },
@@ -107,7 +130,15 @@ export class MovieCardComponent implements OnInit {
       });
     } 
    
-  
+    /**
+     * logic for popup message when user wants to see more
+     * details about movie director
+     * @method openMovieDirectorDialog
+     * @param Name 
+     * @param Bio 
+     * @param Birth 
+     * @param Death 
+     */
     openMovieDirectorDialog(Name: string, Bio: string, Birth: string, Death: string): void {
       this.dialog.open(MovieDirectorComponent, {
         data: { Name, Bio, Birth, Death },
@@ -115,6 +146,13 @@ export class MovieCardComponent implements OnInit {
       });
     }
    
+    /**
+     * logic for popup message when user wants to see more
+     * details about single movie 
+     * @method openMovieDetailsDialog
+     * @param Title 
+     * @param Description 
+     */
     openMovieDetailsDialog(Title: string, Description: string): void {
       this.dialog.open(MovieDetailsComponent, {
         data: { Title, Description },
