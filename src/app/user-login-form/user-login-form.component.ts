@@ -16,6 +16,11 @@ import { Router } from '@angular/router';
 })
 export class UserLoginFormComponent implements OnInit {
 
+ /**
+ * decorator to define the component's input and
+ * bind it to userData object
+ */
+
   @Input() userData = { Username: '', Password: ''};
   
   constructor(
@@ -27,11 +32,18 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-// This is the function responsible for sending the form inputs to the backend
+
+  /**
+   * we invoke the http request that fetches the user data
+   * @function loginUser
+   * Then we store the user data in local storage
+   * Then we display a brief message telling user if their
+   * login attempt was successful
+   * Then we use the router to direct them to the list of movies
+   */
 loginUser(): void {
   this.fetchApiData.userLogin(this.userData).subscribe((response) => {
-// Logic for a successful user registration goes here! (To be implemented)
-   this.dialogRef.close(); // This will close the modal on success!
+   this.dialogRef.close();
    localStorage.setItem('token', response.token);
    localStorage.setItem('user', JSON.stringify(response.user));
    console.log(response);
