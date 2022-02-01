@@ -3,6 +3,7 @@
  * @file contains logic to build a favorite-movie component
  * where we fetch a user's details and retrieve their favorite 
  * movies.
+ * @module FavoriteMovieComponent
  */
 
 import { Component, OnInit } from '@angular/core';

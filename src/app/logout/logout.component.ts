@@ -1,6 +1,7 @@
 /**
  * @file contains logic to enable a  user to sign out of their
  * profile.
+ * @module LogoutComponent
  */
 
 import { Component, OnInit, Input } from '@angular/core';
