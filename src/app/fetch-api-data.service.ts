@@ -1,33 +1,65 @@
+/**
+ * @file contains logic to enable app to make http requests
+ * that connect client server to backend API in order to sign up 
+ * for an account, sign in, edit profile, delete profile, etc
+ */
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-//Declaring the api url that will provide data for the client app
+/**
+ * Declaring the api url that will provide data for 
+ * the client app
+ */
 const apiUrl = 'https://kino-noir.herokuapp.com';
+
+/**
+ * service provided to root and therefore available
+ * to all components
+ */
 @Injectable({
   providedIn: 'root'
 })
+
 export class FetchApiDataService {
- // Inject the HttpClient module to the constructor params
- // This will provide HttpClient to the entire class, making it available via this.http
-  constructor(private http: HttpClient) {
+  /**
+   * Inject the HttpClient module to the constructor params
+   * This will provide HttpClient to the entire class, making 
+   * it available via this.http
+   * @param http 
+   */
+   constructor(private http: HttpClient) {
   }
 
- // Making the api call for the user registration endpoint
+ /**
+  * Making the api call for the user registration endpoint
+  * @function userRegistration
+  * @param userDetails 
+  * @returns http POST request that sends user details to database
+  */
+
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
     .post(apiUrl + '/users', userDetails)
-    //The pipe() function takes the functions you want to combine (in this case, 
-    //there's one method, catchError) as its arguments and will return a new 
-    //function that, when executed, runs the composed functions in sequence.
+    /**
+     * The pipe() function takes the functions you want to 
+     * combine (in this case, there's one method, catchError) 
+     * as its arguments and will return a new function that, 
+     * when executed, runs the composed functions in sequence.
+     */
     .pipe(catchError(this.handleError)
     );
   }
 
-   // Making the api call for the user login endpoint
+   /**
+    * Making the api call for the user login endpoint
+    * @function userLogin
+    * @param userDetails 
+    * @returns http POST request to send login details to database
+    */
    public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -36,7 +68,12 @@ export class FetchApiDataService {
     );
   }
  
-   // Making the api call for getting all movies
+   /**
+    * Making the api call for getting all movies
+    * @function getAllMovies
+    * @returns http GET request that fetches list of all
+    * movies
+    */
    getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -49,7 +86,12 @@ export class FetchApiDataService {
     );
   }
 
-  // Making the api call for getting one movie
+  /**
+   * Making the api call for getting one movie
+   * @function getMovie
+   * @param Title 
+   * @returns http GET request that fetches a movie title
+   */
   getMovie(Title: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
