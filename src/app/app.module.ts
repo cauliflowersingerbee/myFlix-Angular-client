@@ -1,6 +1,8 @@
-//simplified API for Angular applications that makes it 
-//possible for the client app to communicate with the 
-//API or server-side
+/**
+ * The app's root module which defines how to construct and 
+ * bootstrap the app. Contains all the apps imports, modules
+ * and declarations
+ */
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
