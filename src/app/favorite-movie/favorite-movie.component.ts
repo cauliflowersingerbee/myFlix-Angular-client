@@ -30,37 +30,61 @@ export class FavoriteMovieComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { }
 
+  /**
+   * on initializing, we fetch the user's details
+   * so we have access to their favorite movies. 
+   */
   ngOnInit(): void {
     this.getUserDetails();
   } 
 
+  /**
+   * Retrieving the user's details
+   * @method getUserDetails
+   * Then we store them in the local user &
+   * favorite movies states.
+   * Then we call the next method in the call chain
+   * 
+   *  
+   */
   getUserDetails() : void {
     const user = JSON.parse(localStorage.getItem('user') || '');
     this.fetchApiData.getUser(user.Username).subscribe((res: any) => {
       this.user = res;
-      //adding list of favorite movies to local state
       this.favoriteIds = res.FavoriteMovie;
       console.log(this.favoriteIds);
-      //callinf movies 
       this.getMovies();
     });
   }
 
+  /**
+   * Getting a list of all the movies 
+   * @method getMovies
+   * Then calling next method in call chain
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies()
     .subscribe((resp: any) => {
         this.movies = resp;
         console.log(resp);
-        //calling favorites
         this.getFavorites();
       });
     }
-
+    
+    /**
+     * Mapping through the favorite movie IDs and 
+     * comparing them to the movie list so that we 
+     * have an object containing actual movies rather 
+     * than just movie IDs
+     * @function getFavorites
+     * @returns movie object
+     * Then we add this object into local favorite 
+     * movie state
+     */
     getFavorites() : void {
           let favoriteMoviesList = this.favoriteIds.map((fav) => 
             {return this.movies.find((movie: any) => movie._id === fav);
           });
-          //adding movieIDs to local state
           this.favoriteMoviesList = favoriteMoviesList;
           console.log(this.favoriteMoviesList);
     }
