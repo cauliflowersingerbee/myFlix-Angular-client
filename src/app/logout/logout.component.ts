@@ -1,6 +1,10 @@
+/**
+ * @file contains logic to enablea  user to sign out of their
+ * profile.
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -23,6 +27,14 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+/**
+ * We clear the local storage
+ * Then user gets brief message informing them that they
+ * successfully logged out
+ * Then user is redirected to the welcome page which contains
+ * registration and sign-in options
+ * @method userLogout
+ */
 userLogout(): void {
   localStorage.clear();
   console.log('user logged out successfully');
