@@ -1,3 +1,8 @@
+/**
+ * @file contains logic to enable a user to sign into their
+ * profile
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';

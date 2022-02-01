@@ -15,8 +15,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./profile-edit.component.css']
 })
 export class ProfileEditComponent implements OnInit {
-
-  //user = localStorage.getItem('user') || '';
   
 /**
  * decorator to define the component's input and
