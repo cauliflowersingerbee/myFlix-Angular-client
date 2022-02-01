@@ -1,4 +1,13 @@
 
+/**
+ * @file contains logic to build a favorite-movie component  display cards. 
+ * Connects movie-director, movie-genre, and movie-detail
+ * components. 
+ * Upon clicking on a particular movie, users will be 
+ * taken to a single movie view, where additional movie 
+ * details will be displayed. 
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -63,27 +72,6 @@ export class FavoriteMovieComponent implements OnInit {
           console.log(this.favoriteMoviesList);
     }
     
-
-  //getFavoriteMovies() : void {
-    //const user = JSON.parse(localStorage.getItem('user') || '');
-    //this.getMovies();
-   // this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
-    //this.favorites = resp.FavoriteMovie;
-    //  console.log('this.favorites', this.favorites)
-   //   console.log('this.movies', this.movies);
-   // if (this.favorites.length === 0) 
-   //   {return 'You have no favorite movies'} 
-    //else if (this.movies.map((movie: any) => {movie._id ===
-    //   this.favorites.find((fav) => fav === movie._id);
-    //})) 
-    //{let array = this.favorites.map((fav) => 
-     // {return this.movies.find((movie: any) => movie._id === fav);
-   // });
-    //console.log(array) ;
-    //return array;
-   // }
-   // return
- // } )
 }
 
 
