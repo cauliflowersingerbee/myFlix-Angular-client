@@ -1,11 +1,8 @@
 
 /**
- * @file contains logic to build a favorite-movie component  display cards. 
- * Connects movie-director, movie-genre, and movie-detail
- * components. 
- * Upon clicking on a particular movie, users will be 
- * taken to a single movie view, where additional movie 
- * details will be displayed. 
+ * @file contains logic to build a favorite-movie component
+ * where we fetch a user's details and retrieve their favorite 
+ * movies.
  */
 
 import { Component, OnInit } from '@angular/core';
@@ -21,12 +18,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class FavoriteMovieComponent implements OnInit {
 
-  //user: any = JSON.parse(localStorage.getItem('user') || '');
   user: any = {};
   movies: any = [];
-  //list of favorite ids
   favoriteIds: any[] = [];
-  //list of favorite movies
   favoriteMoviesList: any[] = [];
   
   constructor(
@@ -37,7 +31,6 @@ export class FavoriteMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.getFavorites();
     this.getUserDetails();
   } 
 
