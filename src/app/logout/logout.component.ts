@@ -1,5 +1,5 @@
 /**
- * @file contains logic to enablea  user to sign out of their
+ * @file contains logic to enable a  user to sign out of their
  * profile.
  */
 
