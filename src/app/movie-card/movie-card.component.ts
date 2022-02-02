@@ -58,10 +58,10 @@ export class MovieCardComponent implements OnInit {
     }
 
   /**
-   * using the http request to retrieve data about all movies
-   * @function getMovies
-   * @return movies in json format
-   * then store movies to local movie state
+   * using the http request to retrieve data about user details
+   * @function getUserDetails
+   * @return user details in json format
+   * then store details to local user state
    */
      getUserDetails() : void {
       const user = JSON.parse(localStorage.getItem('user') || '');
